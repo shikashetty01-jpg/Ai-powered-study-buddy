@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Dashboard | AI Study Buddy</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+  <div class="main-container">
+    <aside class="sidebar">
+      <h2>Study Buddy</h2>
+      <ul>
+        <li onclick="showSection('saveNotes')">Save Notes</li>
+        <li onclick="showSection('summarizer')">Notes Summariser</li>
+        <li onclick="showSection('aiTutor')">Smart AI Tutor</li>
+        <li onclick="showSection('quizGen')">Quiz Generator</li>
+        <li onclick="showSection('flashcards')">Flashcards</li>
+        <li onclick="showSection('studyTimer')">Study Timer</li>
+        <li onclick="showSection('progress')">Progress Tracker</li>
+        <li onclick="logout()">Logout</li>
+      </ul>
+    </aside>
+
+    <section class="content">
+      <h1 id="welcomeHeading">Welcome</h1>
+
+      <!-- Save Notes -->
+      <div id="saveNotes" class="feature">
+        <h3>Save Notes</h3>
+        <input type="file" id="noteFile" multiple />
+        <button onclick="saveNotes()">Save</button>
+        <ul id="savedList"></ul>
+        <h4>View Note</h4>
+        <pre id="noteViewer" class="note-viewer"></pre>
+      </div>
+
+      <!-- Summarizer -->
+      <div id="summarizer" class="feature">
+        <h3>Notes Summariser</h3>
+        <select id="sumSource"></select>
+        <input type="file" id="sumFile" />
+        <button onclick="summarize()">Summarise</button>
+        <div id="summaryOutput" class="output"></div>
+      </div>
+
+      <!-- AI Tutor -->
+      <div id="aiTutor" class="feature">
+        <h3>Smart AI Tutor</h3>
+        <select id="tutorSource"></select>
+        <input type="file" id="tutorFile" />
+        <textarea id="question" placeholder="Ask something..."></textarea>
+        <button onclick="askAITutor()">Ask</button>
+        <div id="answer" class="output"></div>
+      </div>
+
+      <!-- Quiz Generator -->
+      <div id="quizGen" class="feature">
+        <h3>Quiz Generator</h3>
+        <select id="quizSource"></select>
+        <input type="file" id="quizFile" />
+        <input type="number" id="quizCount" placeholder="No. of questions" min="1" />
+        <select id="difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium" selected>Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+        <button onclick="generateQuiz()">Generate Quiz</button>
+        <div id="quizContainer" class="output"></div>
+      </div>
+
+      <!-- Flashcards -->
+      <div id="flashcards" class="feature">
+        <h3>Flashcards</h3>
+        <select id="flashSource"></select>
+        <input type="file" id="flashFile" />
+        <button onclick="generateFlashcards()">Generate</button>
+        <div id="flashGrid" class="flash-grid"></div>
+      </div>
+
+      <!-- Study Timer -->
+      <div id="studyTimer" class="feature">
+        <h3>Study Timer</h3>
+        <div class="timer-row">
+          <input type="number" id="customTime" placeholder="Minutes" />
+          <button onclick="startCustomTimer()">Start</button>
+          <button onclick="stopTimer()">Stop</button>
+          <button onclick="resetTimer()">Reset</button>
+        </div>
+        <p id="timerDisplay" class="timer-display">00:00</p>
+
+        <h4>Stopwatch</h4>
+        <div class="timer-row">
+          <button onclick="startStopwatch()">Start</button>
+          <button onclick="stopStopwatch()">Stop</button>
+          <button onclick="resetStopwatch()">Reset</button>
+        </div>
+        <p id="stopwatchDisplay" class="timer-display">00:00:00</p>
+      </div>
+
+      <!-- Progress -->
+      <div id="progress" class="feature">
+        <h3>Progress Tracker</h3>
+        <input type="text" id="subjectName" placeholder="Subject" />
+        <input type="text" id="examName" placeholder="Exam" />
+        <input type="number" id="marks" placeholder="Marks" />
+        <button onclick="saveProgress()">Save</button>
+        <ul id="progressList"></ul>
+      </div>
+
+    </section>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
